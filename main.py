@@ -13,7 +13,6 @@ x_test = tf.keras.utils.normalize(x_test, axis=1)
 # Create a simple neural network with 1 input layer, 2 hidden layers, and 1 output layer
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten(input_shape = (28,28)))
-#Might have to be tf.nn.relu instead of 'relu'
 model.add(tf.keras.layers.Dense(units=128, activation=tf.nn.relu))
 model.add(tf.keras.layers.Dense(units=128, activation=tf.nn.relu))
 model.add(tf.keras.layers.Dense(units=10, activation=tf.nn.softmax))
@@ -29,7 +28,7 @@ print(loss)
 # Saves model
 model.save('digits.model')
 
-# Predicts using own hand-drawen digits
+# Predicts using own hand-drawn digits
 for x in range(1,6):
     img = cv.imread(f'{x}.png')[:,:,0]
     img = np.invert(np.array([img]))
